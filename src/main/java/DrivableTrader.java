@@ -24,12 +24,9 @@ public class DrivableTrader extends Trader<Drivable>{
 
     @Override
     public int getSellingPrice(Drivable obj){
-        int price;
         if(obj instanceof Tradable){
-            price = ((Tradable) obj).getPrice();
-        } else {
-            price = Tradable.MISSING_PRICE;
+            return ((Tradable) obj).getPrice() + obj.getMaxSpeed();
         }
-        return price + obj.getMaxSpeed();
+        return Tradable.MISSING_PRICE + obj.getMaxSpeed();
     }
 }
